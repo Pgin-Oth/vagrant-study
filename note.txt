@@ -1,0 +1,216 @@
+
+http://www.vagrantbox.es/
+http://doc.pytest.org/en/latest/
+http://flask.pocoo.org/
+https://www.vagrantup.com/docs/getting-started/up.html
+https://atlas.hashicorp.com/ubuntu/boxes/trusty64
+https://atlas.hashicorp.com/boxes/search?utf8=%E2%9C%93&sort=&provider=&q=trusty
+http://releases.ubuntu.com/16.04/
+http://www.vagrantbox.es/
+http://askubuntu.com/questions/224392/how-to-allow-remote-connections-to-flask
+
+
+
+
+
+
+
+
+
+sudo apt-get install python-virtualenv
+
+virtualenv venv
+
+source venv/bin/activate
+
+pip install flask
+
+python
+
+>>> import flask
+>>> from flask import Flask
+>>> app = Flask(__name__)
+>>> @app.route('/')
+... def index():
+...     return '<h1>Hello World!</h1>'
+...
+>>>
+
+
+
+>>> hello.py:
+
+from flask import Flask
+app = Flask(__name__)
+@app.route('/')
+def index():
+    return '<h1>Hello World!</h1>'
+	
+@app.route('/user/<name>')
+def user(name):
+	return '<h1>Hello, %s!</h1>'
+
+if __name__ == '__main__':
+	app.run(debug=True)
+
+
+
+
+
+
+
+
+vagrant@vagrant-ubuntu-trusty-32:/var$ less /var/log/ap
+apache2/ apt/
+vagrant@vagrant-ubuntu-trusty-32:/var$ su
+Password:
+root@vagrant-ubuntu-trusty-32:/var# less /var/log/a
+alternatives.log  apache2/          apt/              auth.log
+root@vagrant-ubuntu-trusty-32:/var# less /var/log/apache2/
+access.log               error.log                other_vhosts_access.log
+root@vagrant-ubuntu-trusty-32:/var# less /var/log/apache2/error.log
+root@vagrant-ubuntu-trusty-32:/var# less /var/log/apache2/error.log
+root@vagrant-ubuntu-trusty-32:/var# less /var/log/apache2/
+access.log               error.log                other_vhosts_access.log
+root@vagrant-ubuntu-trusty-32:/var# less /var/log/apache2/access.log
+root@vagrant-ubuntu-trusty-32:/var# cd /etc/apache2/
+root@vagrant-ubuntu-trusty-32:/etc/apache2# ls -la
+total 88
+drwxr-xr-x  8 root root  4096 Aug  2 12:54 .
+drwxr-xr-x 97 root root  4096 Aug  2 13:02 ..
+-rw-r--r--  1 root root  7115 Jan  7  2014 apache2.conf
+drwxr-xr-x  2 root root  4096 Aug  2 12:54 conf-available
+drwxr-xr-x  2 root root  4096 Aug  2 12:54 conf-enabled
+-rw-r--r--  1 root root  1782 Jan  3  2014 envvars
+-rw-r--r--  1 root root 31063 Jan  3  2014 magic
+drwxr-xr-x  2 root root 12288 Aug  2 12:54 mods-available
+drwxr-xr-x  2 root root  4096 Aug  2 12:54 mods-enabled
+-rw-r--r--  1 root root   320 Jan  7  2014 ports.conf
+drwxr-xr-x  2 root root  4096 Aug  2 12:54 sites-available
+drwxr-xr-x  2 root root  4096 Aug  2 12:54 sites-enabled
+root@vagrant-ubuntu-trusty-32:/etc/apache2# less apache2.conf
+root@vagrant-ubuntu-trusty-32:/etc/apache2# cd /var/www
+root@vagrant-ubuntu-trusty-32:/var/www# ls -la
+total 17
+drwxrwxrwx  1 vagrant vagrant 4096 Aug  2 13:07 .
+drwxr-xr-x 22 root    root    4096 Aug  2 13:02 ..
+drwxrwxrwx  1 vagrant vagrant 4096 Aug  2 11:31 flasky
+-rwxrwxrwx  1 vagrant vagrant   22 Aug  2 12:59 index.html
+-rwxrwxrwx  1 vagrant vagrant  909 Aug  2 09:56 note.txt
+drwxrwxrwx  1 vagrant vagrant    0 Aug  2 12:09 .vagrant
+-rwxrwxrwx  1 vagrant vagrant 3151 Aug  2 12:51 Vagrantfile
+root@vagrant-ubuntu-trusty-32:/var/www# cd ..
+root@vagrant-ubuntu-trusty-32:/var# cd ..
+root@vagrant-ubuntu-trusty-32:/# cd /etc/apache2/
+root@vagrant-ubuntu-trusty-32:/etc/apache2# ls- la
+lsNo command 'ls-' found, did you mean:
+ Command 'ls' from package 'coreutils' (main)
+ Command 'lsw' from package 'suckless-tools' (universe)
+ Command 'lsh' from package 'lsh-client' (universe)
+ Command 'lsx' from package 'suckless-tools' (universe)
+ls-: command not found
+root@vagrant-ubuntu-trusty-32:/etc/apache2# ls -la
+total 88
+drwxr-xr-x  8 root root  4096 Aug  2 12:54 .
+drwxr-xr-x 97 root root  4096 Aug  2 13:02 ..
+-rw-r--r--  1 root root  7115 Jan  7  2014 apache2.conf
+drwxr-xr-x  2 root root  4096 Aug  2 12:54 conf-available
+drwxr-xr-x  2 root root  4096 Aug  2 12:54 conf-enabled
+-rw-r--r--  1 root root  1782 Jan  3  2014 envvars
+-rw-r--r--  1 root root 31063 Jan  3  2014 magic
+drwxr-xr-x  2 root root 12288 Aug  2 12:54 mods-available
+drwxr-xr-x  2 root root  4096 Aug  2 12:54 mods-enabled
+-rw-r--r--  1 root root   320 Jan  7  2014 ports.conf
+drwxr-xr-x  2 root root  4096 Aug  2 12:54 sites-available
+drwxr-xr-x  2 root root  4096 Aug  2 12:54 sites-enabled
+root@vagrant-ubuntu-trusty-32:/etc/apache2# grep -R DocumentRoot .
+./sites-available/default-ssl.conf:             DocumentRoot /var/www/html
+./sites-available/000-default.conf:     DocumentRoot /var/www/html
+./sites-enabled/000-default.conf:       DocumentRoot /var/www/html
+root@vagrant-ubuntu-trusty-32:/etc/apache2# cd sites-enabled/
+root@vagrant-ubuntu-trusty-32:/etc/apache2/sites-enabled# less 000-default.conf
+
+
+
+vagrant@vagrant-ubuntu-trusty-32:~$ netstat -tulpe
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State                                                                                                                                                                                                      User       Inode       PID/Program name
+tcp        0      0 *:ssh                   *:*                     LISTEN                                                                                                                                                                                                     root       9119        -
+tcp        0      0 *:37886                 *:*                     LISTEN                                                                                                                                                                                                     statd      8175        -
+tcp        0      0 localhost:5000          *:*                     LISTEN                                                                                                                                                                                                     vagrant    11051       1605/python
+tcp        0      0 *:sunrpc                *:*                     LISTEN                                                                                                                                                                                                     root       8051        -
+tcp6       0      0 [::]:ssh                [::]:*                  LISTEN                                                                                                                                                                                                     root       9121        -
+tcp6       0      0 [::]:33932              [::]:*                  LISTEN                                                                                                                                                                                                     statd      8181        -
+tcp6       0      0 [::]:sunrpc             [::]:*                  LISTEN                                                                                                                                                                                                     root       8054        -
+tcp6       0      0 [::]:http               [::]:*                  LISTEN                                                                                                                                                                                                     root       9818        -
+udp        0      0 *:757                   *:*                                                                                                                                                                                                                                root       8050        -
+udp        0      0 *:45076                 *:*                                                                                                                                                                                                                                root       7739        -
+udp        0      0 localhost:813           *:*                                                                                                                                                                                                                                root       8167        -
+udp        0      0 *:bootpc                *:*                                                                                                                                                                                                                                root       7854        -
+udp        0      0 *:sunrpc                *:*                                                                                                                                                                                                                                root       8046        -
+udp        0      0 *:37836                 *:*                                                                                                                                                                                                                                statd      8172        -
+udp6       0      0 [::]:757                [::]:*                                                                                                                                                                                                                             root       8053        -
+udp6       0      0 [::]:5147               [::]:*                                                                                                                                                                                                                             root       7748        -
+udp6       0      0 [::]:sunrpc             [::]:*                                                                                                                                                                                                                             root       8052        -
+udp6       0      0 [::]:45811              [::]:*                                                                                                                                                                                                                             statd      8178        -
+vagrant@vagrant-ubuntu-trusty-32:~$ netstat -tulpe | grep 5500
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+vagrant@vagrant-ubuntu-trusty-32:~$ su
+Password:
+root@vagrant-ubuntu-trusty-32:/home/vagrant# netstat -tulpe | grep 5500
+root@vagrant-ubuntu-trusty-32:/home/vagrant# wget
+wget: missing URL
+Usage: wget [OPTION]... [URL]...
+
+Try `wget --help' for more options.
+root@vagrant-ubuntu-trusty-32:/home/vagrant# netstat -tulpe | grep 5000
+tcp        0      0 localhost:5000          *:*                     LISTEN                                                                                                                                                                                                     vagrant    11051       1605/python
+root@vagrant-ubuntu-trusty-32:/home/vagrant# wget localhost:5000
+--2016-08-02 13:41:09--  http://localhost:5000/
+Resolving localhost (localhost)... 127.0.0.1
+Connecting to localhost (localhost)|127.0.0.1|:5000... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 21 [text/html]
+Saving to: ‘index.html’
+
+100%[======================================>] 21          --.-K/s   in 0.001s
+
+2016-08-02 13:41:09 (23.3 KB/s) - ‘index.html’ saved [21/21]
+
+root@vagrant-ubuntu-trusty-32:/home/vagrant# less index.html
+root@vagrant-ubuntu-trusty-32:/home/vagrant#
+Broadcast message from vagrant@vagrant-ubuntu-trusty-32
+        (unknown) at 13:54 ...
+
+The system is going down for halt NOW!
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+
+xichen00@Xiangsu-W7 MINGW32 /c/Projects/study
+$ telnet
+bash: telnet: command not found
+
+xichen00@Xiangsu-W7 MINGW32 /c/Projects/study
+$ netstat -an
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:2869           0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:5357           0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:5500           0.0.0.0:0              LISTENING
+  TCP    0.0.0.0:8080           0.0.0.0:0              LISTENING
+...
+  UDP    [fe80::2947:3c13:44ea:41f1%10]:1900  *:*
+  UDP    [fe80::2947:3c13:44ea:41f1%10]:49154  *:*
+  UDP    [fe80::31f0:f47b:9ac9:2244%20]:1900  *:*
+  UDP    [fe80::dd4c:3cdb:afca:8d88%17]:53  *:*
+  UDP    [fe80::dd4c:3cdb:afca:8d88%17]:1900  *:*
+  UDP    [fe80::dd4c:3cdb:afca:8d88%17]:49153  *:*
+
